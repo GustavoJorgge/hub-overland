@@ -1,0 +1,30 @@
+:root{
+    --white: #fff;
+    --yellow-50:#FFF9F3; /*oklch(0.987, 0.026, 102.212)*/
+    --yellow-200:#FFE6CC; /*oklch(0.945 0.129 101.54)*/
+    --gray-300:#c4c4cc;
+    --gray-400:#8d8d99;
+    --green-700:#4D8F74; /*oklch(0.453, 0.124, 130.933)*/
+    --lime-800:#3C5A58; /*oklch(0.378, 0.077, 168.94)*/
+    --green-950:#2A3F3E; /*oklch(0.266, 0.065, 152.934)*/
+
+    --green-500: #00875f;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: var(--yellow-200);
+    color: var(--gray-400);
+    -webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea, button{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1rem; /*1rem é 16px no tamanho padrao*/
+}

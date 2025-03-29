@@ -1,0 +1,12 @@
+.header{
+    background: var(--green-700);
+    display: flex;
+    justify-content: center;
+    /*não coloca align center pois o padding fara a função de ajustar*/
+    padding: 1.25rem 0;
+}
+
+.header img{
+    height: 2rem;
+}
+
