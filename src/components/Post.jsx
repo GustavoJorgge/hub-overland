@@ -13,6 +13,7 @@ export function Post() {
                 </div>
                 <time title="31 de Março às 23:51" dateTime="2025/07/12 23:46:30">Publicado à 1h </time>
             </header>
+
             <div className={styles.content}>
                 <p>Fala galeraa 👋</p>
                 <p>Vou realizar uma viagem para a Chapada dos Veadeiros, porém não tenho veiculos. Nesta condição, alguem consegue me dar alguma dica?</p>
@@ -22,6 +23,18 @@ export function Post() {
                     <a href="">{' '}#Trekking.</a>
                 </p>
             </div>
+
+            <form className={styles.commentForm}>
+                <strong>Comentario:</strong>
+
+                <textarea
+                    placeholder='Deixe aqui seu comentario...'
+                />
+
+                <footer>
+                    <button type="submit">Publicar</button>
+                </footer>
+            </form>
         </article>
 
     )
