@@ -1,4 +1,5 @@
 import styles from './Post.module.css'
+import {Comment} from './Comment'
 
 export function Post() {
     return (
@@ -8,7 +9,7 @@ export function Post() {
                     <img className={styles.avatar} src="https://github.com/GustavoJorgge.png" />
                     <div className={styles.authorInfo}>
                         <strong>Gustavo Jorge</strong>
-                        <span>Overlander</span>
+                        <span>Overlander | Desenvolvedor</span>
                     </div>
                 </div>
                 <time title="31 de Março às 23:51" dateTime="2025/07/12 23:46:30">Publicado à 1h </time>
@@ -35,6 +36,12 @@ export function Post() {
                     <button type="submit">Publicar</button>
                 </footer>
             </form>
+
+            <div className={styles.commentList}>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+            </div>
         </article>
 
     )
