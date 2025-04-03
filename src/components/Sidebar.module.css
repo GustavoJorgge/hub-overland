@@ -20,21 +20,7 @@
     margin-top: calc(0px - 1.5rem - 6px);
 }
 
-.avatar{
-/*
-box-sizing: initial;
-Colocando box sizing initial para não "espremer" a imagem dentro do container
-podemos fazer com calculo tambem: 
-width: calc(" (soma dos pixels das bordas)
-  */
-    width: calc(3rem + 10px);
-    height: (3rem + 10px);
-    border-radius: 8px;
-    border: 3px solid var(--green-950);
 
-    outline: 2px solid var(--green-700)
-
-}
 
 .profile strong{
     margin-top: 1rem;
