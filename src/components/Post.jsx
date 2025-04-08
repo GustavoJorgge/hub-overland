@@ -1,31 +1,44 @@
+import { format, formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+
 import styles from './Post.module.css'
-import {Comment} from './Comment'
+import { Comment } from './Comment'
 import { Avatar } from './Avatar'
 
-export function Post(props) {
+export function Post({ author, publishedAt, content }) {
+    const publishedDateForm = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+        locale: ptBR
+    })
 
-    console.log(props)
+    const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+        locale: ptBR,
+        addSuffix: true
+    })
+
+
     return (
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                    <Avatar hasborder src="https://github.com/GustavoJorgge.png" />
+                    <Avatar hasborder src={author.avatarUrl} />
                     <div className={styles.authorInfo}>
-                        <strong>Gustavo Jorge</strong>
-                        <span>Overlander | Desenvolvedor</span>
+                        <strong>{author.name}</strong>
+                        <span>{author.role}</span>
                     </div>
                 </div>
-                <time title="31 de Março às 23:51" dateTime="2025/07/12 23:46:30">Publicado à 1h </time>
+                <time title={publishedDateForm} dateTime={publishedAt.toISOString()}>
+                    {publishedDateRelativeToNow}
+                </time>
             </header>
 
             <div className={styles.content}>
-                <p>Fala galeraa 👋</p>
-                <p>Vou realizar uma viagem para a Chapada dos Veadeiros, porém não tenho veiculos. Nesta condição, alguem consegue me dar alguma dica?</p>
-                <p>Pretendo fazer uma viagem de 5 dias e 4 noites.</p>,
-                <p><a href=""> #ChapadaDosVeadeiros</a>
-                    <a href="">{' '}#Trip </a>
-                    <a href="">{' '}#Trekking.</a>
-                </p>
+                {content.map(line => {
+                    if (line.type == 'paragraph') {
+                        return <p>{line.content}</p>
+                    } else if (line.type =='link') {
+                        return <p><a href="#">{line.content}</a> </p>
+                    }
+                })}
             </div>
 
             <form className={styles.commentForm}>
@@ -41,9 +54,9 @@ export function Post(props) {
             </form>
 
             <div className={styles.commentList}>
-                <Comment/>
-                <Comment/>
-                <Comment/>
+                <Comment />
+                <Comment />
+                <Comment />
             </div>
         </article>
 
