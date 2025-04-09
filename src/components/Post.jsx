@@ -26,7 +26,7 @@ export function Post({ author, publishedAt, content }) {
         addSuffix: true
     })
 
-    function handleNewCommentChange(){
+    function handleNewCommentChange() {
         setNewCommentText(event.target.value)
     }
 
@@ -40,6 +40,16 @@ export function Post({ author, publishedAt, content }) {
         setNewCommentText('')
         // event.target.comment.value = '';
         // console.log(comments)
+    }
+
+    function deleteComment(commentToDelete) {
+
+        //imutabilidade -> as variaveis não sofrem mutação = Nós nunca alteramos a variavel na memoria, nós criamos um novo valor (um novo espaço na memoria)
+
+        const commentsWithOutDeleteOne = comments.filter(comment =>{
+            return comment != commentToDelete;
+        })
+        setComments(commentsWithOutDeleteOne);
     }
 
 
@@ -85,7 +95,13 @@ export function Post({ author, publishedAt, content }) {
 
             <div className={styles.commentList}>
                 {comments.map(comment => {
-                    return <Comment key={comment} content={comment} />
+                    return (
+                        <Comment
+                            key={comment}
+                            content={comment}
+                            onDeleteComment={deleteComment}
+                        />
+                    )
                 })}
             </div>
         </article>
