@@ -16,6 +16,7 @@ export function Post({ author, publishedAt, content }) {
 
     const [newCommentText, setNewCommentText] = useState('')
 
+    console.log(newCommentText)
 
     const publishedDateForm = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
         locale: ptBR
@@ -27,6 +28,7 @@ export function Post({ author, publishedAt, content }) {
     })
 
     function handleNewCommentChange() {
+        event.target.setCustomValidity('')
         setNewCommentText(event.target.value)
     }
 
@@ -42,6 +44,10 @@ export function Post({ author, publishedAt, content }) {
         // console.log(comments)
     }
 
+    function handleNewCommentInvalid(){
+        event.target.setCustomValidity('Este Campo é obrigatório!')
+    }
+
     function deleteComment(commentToDelete) {
 
         //imutabilidade -> as variaveis não sofrem mutação = Nós nunca alteramos a variavel na memoria, nós criamos um novo valor (um novo espaço na memoria)
@@ -52,7 +58,7 @@ export function Post({ author, publishedAt, content }) {
         setComments(commentsWithOutDeleteOne);
     }
 
-
+    const isNewCommentInputEmpty = newCommentText.length ==0 
     return (
         <article className={styles.post}>
             <header>
@@ -86,10 +92,12 @@ export function Post({ author, publishedAt, content }) {
                     placeholder='Deixe aqui seu comentario...'
                     value={newCommentText}
                     onChange={handleNewCommentChange}
+                    onInvalid={handleNewCommentInvalid}
+                    required
                 />
 
                 <footer>
-                    <button type="submit">Publicar</button>
+                    <button type="submit" disabled={isNewCommentInputEmpty}>Publicar</button>
                 </footer>
             </form>
 
